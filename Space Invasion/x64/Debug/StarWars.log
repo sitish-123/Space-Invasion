@@ -1,0 +1,13 @@
+﻿  Bullet.cpp
+  Enemy.cpp
+  Game.cpp
+C:\Users\nEW u\source\repos\Space Invasion\StarWars\Game.cpp(137,44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\nEW u\source\repos\Space Invasion\StarWars\Game.cpp(137,44): warning C4244:         with
+C:\Users\nEW u\source\repos\Space Invasion\StarWars\Game.cpp(137,44): warning C4244:         [
+C:\Users\nEW u\source\repos\Space Invasion\StarWars\Game.cpp(137,44): warning C4244:             T=unsigned int
+C:\Users\nEW u\source\repos\Space Invasion\StarWars\Game.cpp(137,44): warning C4244:         ]
+  main.cpp
+  Player.cpp
+  Star.cpp
+  Generating Code...
+  StarWars.vcxproj -> C:\Users\nEW u\source\repos\Space Invasion\x64\Debug\Space Invasion.exe
