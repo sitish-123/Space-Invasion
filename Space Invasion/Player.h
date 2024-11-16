@@ -13,6 +13,10 @@ private:
     float attackCooldown;
     float attackCooldownmax;
 
+    float hp;
+    float hpmax;
+
+
     void initVariables();
     void initTexture();
     void initSprite();
@@ -22,13 +26,20 @@ public:
     virtual ~Player();
 
     const sf::Vector2f& getPos() const;
-    sf::FloatRect getGlobalBounds() const {
+    const sf::FloatRect getBounds() const 
+    {
         return this->sprite.getGlobalBounds();
     }
+    const float& getHp() const;
+    const float& getHpMax() const;
 
-    void move(const float dx, const float dy);
+
+    void losehp(int damage);
+
+    void move(const float dx, const float dy, const sf::RenderWindow & window);
     const bool canAttack();
     void updateAttack();
     void update();
+    void resetstats();
     void render(sf::RenderTarget& target);
 };

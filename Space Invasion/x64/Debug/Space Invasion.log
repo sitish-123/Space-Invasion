@@ -1,13 +1,25 @@
 ﻿  Bullet.cpp
   Enemy.cpp
   Game.cpp
-C:\Users\nEW u\source\repos\Space Invasion\Space Invasion\Game.cpp(137,44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\nEW u\source\repos\Space Invasion\Space Invasion\Game.cpp(137,44): warning C4244:         with
-C:\Users\nEW u\source\repos\Space Invasion\Space Invasion\Game.cpp(137,44): warning C4244:         [
-C:\Users\nEW u\source\repos\Space Invasion\Space Invasion\Game.cpp(137,44): warning C4244:             T=unsigned int
-C:\Users\nEW u\source\repos\Space Invasion\Space Invasion\Game.cpp(137,44): warning C4244:         ]
   main.cpp
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Game.cpp(150,44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Game.cpp(150,44): warning C4244:         with
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Game.cpp(150,44): warning C4244:         [
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Game.cpp(150,44): warning C4244:             T=unsigned int
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Game.cpp(150,44): warning C4244:         ]
   Player.cpp
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(81,23): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(81,23): warning C4244:         with
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(81,23): warning C4244:         [
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(81,23): warning C4244:             T=unsigned int
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(81,23): warning C4244:         ]
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(82,24): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(82,24): warning C4244:         with
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(82,24): warning C4244:         [
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(82,24): warning C4244:             T=unsigned int
+C:\Users\nEW u\Downloads\Space Invasion\Space Invasion\Player.cpp(82,24): warning C4244:         ]
+  Projectile.cpp
   Star.cpp
+  UI.cpp
   Generating Code...
-  Space Invasion.vcxproj -> C:\Users\nEW u\source\repos\Space Invasion\x64\Debug\Space Invasion.exe
+  Space Invasion.vcxproj -> C:\Users\nEW u\Downloads\Space Invasion\x64\Debug\Space Invasion.exe

@@ -3,18 +3,22 @@
 // Initialize variables (type, hp, damage, etc.)
 void Enemy::initVariables()
 {
-    this->speed = 2.f;
+    this->pointCount = 10;
+    this->speed = 0.5f;
     this->type = 0;
-    this->hp = 0;
-    this->hpMax = 10;
-    this->damage = 1;
+    this->hp = this->hpMax;
+    this->hpMax = static_cast<int>(this->pointCount);
+    this->damage = 3;
+    this->bulletDamage = 1;
     this->points = 5;
+    this->shootCooldownMax = 120.f;
+    this->shootCooldown = this->shootCooldownMax;
 }
 
 // Load the texture and handle potential errors
 void Enemy::initShape()
 {
-    if (!this->texture.loadFromFile("Textures/rock.png"))
+    if (!this->texture.loadFromFile("Textures/space1.png"))
     {
         std::cerr << "ERROR::ENEMY::Failed to load texture from file" << std::endl;
     }
@@ -29,17 +33,14 @@ void Enemy::initSprite()
     const float minScale = 0.01f;
     const float maxScale = 0.1f;
 
-    // Generate a random float between minScale and maxScale
-    std::random_device rd;  // Seed for the random number engine
-    std::mt19937 gen(rd()); // Mersenne Twister engine for generating random numbers
-    std::uniform_real_distribution<float> dis(minScale, maxScale);
+   
 
-    float scaleFactor = dis(gen); // Random scaling factor
+    float scaleFactor = 0.1f; 
 
-    this->rocks.setTexture(this->texture);
+    this->EnemyShips.setTexture(this->texture);
 
     // Resize the sprite using the random scale factor
-    this->rocks.scale(scaleFactor, scaleFactor);
+    this->EnemyShips.scale(scaleFactor, scaleFactor);
 }
 
 
@@ -51,12 +52,31 @@ Enemy::Enemy(float posx, float posy)
     this->initSprite();
 
     this->validatePosition(posx, posy);
-    this->rocks.setPosition(posx, posy);
+    this->EnemyShips.setPosition(posx, posy);
+}
+
+bool Enemy::canShoot() {
+    if (this->shootCooldown >= this->shootCooldownMax) {
+        this->shootCooldown = 0.f; // Reset timer after shooting
+        return true;
+    }
+    this->shootCooldown += 1.f; // Increment timer
+    return false;
+}
+
+void Enemy::update() {
+    this->EnemyShips.move(0.f, speed);
 }
 
 // Destructor (currently empty, but useful for future expansions)
 Enemy::~Enemy()
 {
+
+}
+
+const sf::Vector2f& Enemy::getPos() const
+{
+    return this->EnemyShips.getPosition();
 }
 
 // Function to validate and adjust the enemy's initial position if necessary
@@ -69,28 +89,73 @@ void Enemy::validatePosition(float& posx, float& posy)
     // Adjust position if it's outside the screen bounds
     if (posx < 0.0f) posx = 0.0f;
     if (posy < 0.0f) posy = 0.0f;
-    if (posx > screenWidth - this->rocks.getGlobalBounds().width)
-        posx = screenWidth - this->rocks.getGlobalBounds().width;
-    if (posy > screenHeight - this->rocks.getGlobalBounds().height)
-        posy = screenHeight - this->rocks.getGlobalBounds().height;
+    if (posx > screenWidth - this->EnemyShips.getGlobalBounds().width)
+        posx = screenWidth - this->EnemyShips.getGlobalBounds().width;
+    if (posy > screenHeight - this->EnemyShips.getGlobalBounds().height)
+        posy = screenHeight - this->EnemyShips.getGlobalBounds().height;
 }
 
-const sf::FloatRect Enemy::getbounds() const
+const sf::FloatRect Enemy::getBounds() const
 {
-    return this->rocks.getGlobalBounds();
+    return this->EnemyShips.getGlobalBounds();
 }
 
-// Update method (expand with enemy behavior as needed)
-void Enemy::update()
-{
-    this->rocks.move(0.f, speed);
+
+
+
+void Enemy::takeDamage(int damage) {
+    this->hp -= damage;
+    if (this->hp < 0) this->hp = 0;
 }
+
+const int& Enemy::getPoints() const
+{
+    // TODO: insert return statement here
+    return this->points;
+}
+
+const int& Enemy::getDamage() const
+{
+    return this->damage;
+}
+
+const int& Enemy::getBulletDamage() const
+{
+    return this->bulletDamage;
+}
+
+
+bool Enemy::isDead() const {
+    return this->hp <= 0;
+}
+
+
 
 // Render the enemy on the screen
-void Enemy::render(sf::RenderTarget* target)
+ void Enemy::render(sf::RenderTarget* target)
 {
     if (target)
     {
-        target->draw(this->rocks);
+        target->draw(this->EnemyShips);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

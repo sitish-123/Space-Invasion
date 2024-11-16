@@ -1,4 +1,3 @@
-// Star.h
 #pragma once
 #include <SFML/Graphics.hpp>
 
@@ -6,14 +5,13 @@ class Star {
 public:
     Star(float x, float y, float radius);
 
-    void update();
+    // Updated to accept level speed multiplier as a parameter
+    void update(float levelSpeedMultiplier);
     void render(sf::RenderTarget& target);
 
 private:
     sf::CircleShape shape;
-    float speed;
-    float twinkleSpeed;
-    float twinkleOffset;
-    sf::Vector2f velocity; // Velocity for movement
-
+    float baseSpeed;       // Base speed, adjusted in `update` with level multiplier
+    float twinkleSpeed;    // Twinkle speed
+    float twinkleOffset;   // Initial twinkle phase offset
 };
